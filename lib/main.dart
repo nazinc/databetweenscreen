@@ -64,11 +64,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> goAhead(bool standardType) async {
     var result;
+    var testval = textEditingController.text;
+    var strval2 = int.parse(testval) * 10;
+
     if (standardType) {
       result = await Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SecondPage(textEditingController.text),
+            builder: (context) => SecondPage(strval2),
           )
       );
     } else {
@@ -93,10 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class SecondPage extends StatelessWidget {
-  final String? _title;
+  final int? _title;
   final textEditingController = TextEditingController(text: "Text from second screen");
   SecondPage([this._title]);
-
 
   @override
   Widget build(BuildContext context) {
